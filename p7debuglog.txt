@@ -1,4 +1,4 @@
- 
+
  gcc -g p7original.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
@@ -24,17 +24,66 @@ warning: Error disabling address space randomization: Operation not permitted
 
 Breakpoint 1, main () at p7original.c:32
 32    c1=input();
+(gdb) s
+input () at p7original.c:10
+10  {
+(gdb) n
+12    printf("enter the real part:");
+(gdb) n
+13    scanf("%f", &c.real);
+(gdb) n
+enter the real part:1
+14    printf("enter the imaginary part:");
+(gdb) n
+15    scanf("%f", &c.imaginary);
+(gdb) n
+enter the imaginary part:2
+16    return c;
+(gdb) n
+17  }
+(gdb) n
+main () at p7original.c:33
+33    c2=input();
+(gdb) s
+input () at p7original.c:10
+10  {
+(gdb) n
+12    printf("enter the real part:");
+(gdb) n
+13    scanf("%f", &c.real);
 (gdb) n
 enter the real part:12
+14    printf("enter the imaginary part:");
+(gdb) n
+15    scanf("%f", &c.imaginary);
+(gdb) n
 enter the imaginary part:1i
-33    c2=input();
+16    return c;
 (gdb) n
-enter the real part:enter the imaginary part:13:1i
+17  }
+(gdb) n
+main () at p7original.c:34
 34    sum=add(c1, c2);
+(gdb) s
+add (a=..., b=...) at p7original.c:21
+21    sum.real=a.real + b.real;
 (gdb) n
+22    sum.imaginary=a.imaginary + b.imaginary;
+(gdb) n
+23    return sum;
+(gdb) n
+24  }
+(gdb) n
+main () at p7original.c:35
 35    output(c1, c2, sum);
+(gdb) s
+output (a=..., b=..., sum=...) at p7original.c:27
+27    printf("the sum of %0.1f + %0.1fi and %0.1f + %0.1fi is %0.1f + %0.1fi\n", a.real, a.imaginary, b.real, b.imaginary, sum.real, sum.imaginary);
 (gdb) n
-the sum of 12.0 + 1.0i and 12.0 + 13.0i is 24.0 + 14.0i
+the sum of 1.0 + 2.0i and 12.0 + 1.0i is 13.0 + 3.0i
+28  }
+(gdb) n
+main () at p7original.c:36
 36    return 0;
 (gdb) n
 37  }(gdb) 
