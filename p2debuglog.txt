@@ -1,5 +1,5 @@
  
- gcc -g p2original.c
+ gcc -g p2final.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -16,12 +16,26 @@ Find the GDB manual and other documentation resources online at:
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x7d8: file p2final.c, line 40.
 (gdb) r
 Starting program: /home/runner/pps-IA1-practice/a.out 
 warning: Error disabling address space randomization: Operation not permitted
- enter a number:12
- enter a number:14
- enter a number:1
-the largest element is: 14
-[Inferior 1 (process 45) exited normally]
-(gdb)
+n
+n
+
+Breakpoint 1, main () at p2final.c:40
+40    a=input();
+(gdb) n
+ enter a number:41    b=input();
+(gdb) n
+42    c=input();
+(gdb) n
+43    largest = compare(a, b, c);
+(gdb) n
+44    output (largest);
+(gdb) n
+ enter a number: enter a number:the largest element is: 32553
+45    return 0;
+(gdb) n
+46  }
